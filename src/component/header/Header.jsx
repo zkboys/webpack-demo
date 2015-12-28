@@ -7,9 +7,9 @@ const Header = React.createClass({
     render() {
         return (
             <header className="admin-header">
-                <div className="admin-logo"><a href="/">美餐云管理台框架</a></div>
+                <div className="admin-logo"><a href="/">后台管理台框架</a></div>
                 <Tooltip placement="right" title="切换菜单状态">
-                    <a className="admin-sidebar-toggle"><FAIcon type="fa-bars" /></a>
+                    <a className="admin-sidebar-toggle"><FAIcon type="fa-bars"/></a>
                 </Tooltip>
                 <ul className="admin-header-menu">
                     <li className="admin-header-menu-item">
@@ -31,7 +31,12 @@ const Header = React.createClass({
                         </Tooltip>
                     </li>
                     <li className="admin-header-menu-item">
-                        <a href="javascript:;"><img src="https://avatars2.githubusercontent.com/u/1450667?v=3&s=40" className="admin-user-avatar" alt="陈颖"/>陈颖</a>
+                        <Tooltip placement="bottom" title="个人设置">
+                            <a href="javascript:;">
+                                <img src="https://avatars0.githubusercontent.com/u/11864780?v=3&s=60" className="admin-user-avatar" alt="王树彬"/>
+                                王树彬
+                            </a>
+                        </Tooltip>
                     </li>
                     <li className="admin-header-menu-item">
                         <Tooltip placement="bottomRight" title="退出系统">
