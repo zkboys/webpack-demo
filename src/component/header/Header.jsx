@@ -2,7 +2,7 @@ import './style.css';
 import React from 'react';
 import {Icon, Badge, Tooltip} from 'antd';
 import FAIcon from '../faicon/FAIcon';
-
+import avatar from './86.jpg';
 const Header = React.createClass({
     render() {
         return (
@@ -33,7 +33,7 @@ const Header = React.createClass({
                     <li className="admin-header-menu-item">
                         <Tooltip placement="bottom" title="个人设置">
                             <a href="javascript:;">
-                                <img src="https://avatars0.githubusercontent.com/u/11864780?v=3&s=60" className="admin-user-avatar" alt="王树彬"/>
+                                <img src={avatar} className="admin-user-avatar" alt="王树彬"/>
                                 王树彬
                             </a>
                         </Tooltip>

@@ -7,7 +7,7 @@ sudo npm install webpack -g
 sudo npm install webpack-dev-server -g
 
 npm install
-npm run server
+npm run start
 ```
 
 ##build
