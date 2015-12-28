@@ -1,0 +1,12 @@
+.admin-page-header {
+    border-bottom: 1px solid #eee;
+}
+
+.admin-page-header > .ant-breadcrumb {
+    float: right;
+    margin-top: -27px;
+}
+
+.admin-page-content {
+    margin-top: 15px;
+}
