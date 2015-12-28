@@ -17,7 +17,10 @@ const Dashboard = React.createClass({
                     </Breadcrumb>
                 </div>
                 <div className="admin-page-content">
-                    <p>这个时什么页面？干嘛的？这个有点慢啊</p>
+                    <p>npm run server 运行一个server 并且打开默认浏览器！</p>
+                    <p>开发过程中，修改文件，浏览器会自动刷新，特别适合双屏/大屏开发！</p>
+                    <p>随着项目复杂度的增加，不知道会不会慢。目前的相应速度还是可以接受的。</p>
+                    <p>希望不卡吧。哈哈。写起来真的就挺爽了。一保存浏览器就自动刷新了。想你的时候，你在哪里？</p>
                 </div>
             </Page>
         );

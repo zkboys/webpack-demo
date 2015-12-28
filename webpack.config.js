@@ -19,6 +19,24 @@ var cfg = configs.development;
 /*
  * 获取自定义参数
  * 自定义参数约定：webpack --cfg.path=./public --cfg.runmod=dev
+ *
+ * 有更好的方法：
+ * 但是报错：Option '-d' not supported. Trigger 'webpack -h' for more details.
+ *
+ var argv = require('argv');
+ var args = argv.option({
+     name: 'option',
+     short: 'o',
+     type: 'string',
+     description: 'Defines an option for your script',
+     example: "'script --opiton=value' or 'script -o value'"
+ }).run();
+
+ console.dir(args.options);
+ 然后
+ $ node app.js -o aaa
+ { option: 'aaa' }
+ *
  * */
 var arguments = process.argv.splice(2);
 if (arguments) {
@@ -34,6 +52,17 @@ if (arguments) {
         }
     }
 }
+/*
+* 定义entry
+* 如果项目结构命名有良好的约定，是否考虑使用代码自动生成entry？
+*
+* */
+
+var _entry = {
+    //"index": ["./src/home/home.jsx", "./src/home/home-content.jsx"],//会合并成一个index.js
+    "index": './src/entry/index.jsx'
+};
+
 //构建之前，先清除之前构建的内容
 var child_process = require('child_process');
 child_process.exec('rm -rf ' + join(__dirname, cfg.path),
@@ -57,10 +86,7 @@ module.exports = {
     resolveLoader: {
         modulesDirectories: ['node_modules', (0, join)(__dirname, '../node_modules')]
     },
-    entry: {
-        //"index": ["./src/home/home.jsx", "./src/home/home-content.jsx"],
-        "index": './src/entry/index.jsx'
-    },
+    entry:_entry,
     output: {
         path: join(__dirname, cfg.path),
         publicPath: cfg.publicPath,

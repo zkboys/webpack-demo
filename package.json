@@ -9,6 +9,7 @@
     "react-dom": "^0.14.3"
   },
   "devDependencies": {
+    "argv": "0.0.2",
     "autoprefixer-loader": "~3.1.0",
     "babel-cli": "~6.3.17",
     "babel-core": "~6.3.17",
@@ -41,7 +42,7 @@
     "webpack": "~1.12.2"
   },
   "scripts": {
-    "dev-server": "webpack-dev-server --progress --colors",
+    "server": "xdg-open http://localhost:8088/webpack-dev-server/index.html && webpack-dev-server --port 8088 --progress --colors",
     "build-dev": "webpack -d -p --cfg.runmod=development",
     "build-test": "webpack -d -p --cfg.runmod=test",
     "build-pro": "webpack -d -p --cfg.runmod=production"
