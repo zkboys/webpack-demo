@@ -42,8 +42,9 @@
     "webpack": "~1.12.2"
   },
   "scripts": {
-    "server": "xdg-open http://localhost:8088/webpack-dev-server/index.html && webpack-dev-server --port 8088 --progress --colors",
-    "build-dev": "webpack -d -p --cfg.runmod=development",
+    "open-browser":"xdg-open http://localhost:8088/webpack-dev-server/index.html",
+    "server": " npm run open-browser && webpack-dev-server --port 8088 --progress --profile --colors --cfg.clean=false",
+    "build-dev": "webpack -d -p --profile --progress --colors --display-modules --cfg.runmod=development",
     "build-test": "webpack -d -p --cfg.runmod=test",
     "build-pro": "webpack -d -p --cfg.runmod=production"
   },
