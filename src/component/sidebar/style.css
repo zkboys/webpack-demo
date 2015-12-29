@@ -60,3 +60,11 @@
 .admin-sidebar .ant-menu-submenu-title .fa {
     margin-right: 5px;
 }
+.admin-sidebar .ant-menu-item a,
+.admin-sidebar .ant-menu-submenu-title a {
+    display: inline-block;
+    color: #b8c7ce;
+    width: 100%;
+}
+
+

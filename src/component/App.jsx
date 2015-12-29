@@ -3,7 +3,6 @@ import Header from './header/Header';
 import Sidebar from './sidebar/Sidebar';
 import Container from './container/Container';
 import Dashboard from './dashboard/Dashboard';
-import MyForm from './myform/MyForm'
 const App = React.createClass({
     render() {
         return (
@@ -11,11 +10,10 @@ const App = React.createClass({
                 <Header />
                 <Sidebar />
                 <Container>
-                    <MyForm/>
+                    {this.props.children}
                 </Container>
             </div>
         );
     }
 });
-
 export default App;

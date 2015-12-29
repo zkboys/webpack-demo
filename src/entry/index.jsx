@@ -1,5 +1,5 @@
 import '../common/lib';
-import App from '../component/App';
-import ReactDOM from 'react-dom';
+import Routes from '../component/Routes';
 import React from 'react';
-ReactDOM.render(<App />, document.getElementById('framework'));
+import ReactDOM from 'react-dom';
+ReactDOM.render(<Routes />, document.getElementById('framework'));

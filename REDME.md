@@ -1,6 +1,10 @@
 #webpack示例项目
 *基于ant.design*
+##evn
+```
+node 4.x
 
+```
 ##dev
 ```
 sudo npm install webpack -g
@@ -14,8 +18,15 @@ npm run start
 ```
 npm run build-dev  //build-test  build-pro
 ```
-##问题
-执行构建有些慢
+##待解决问题
+- 执行构建有些慢
+- 根据地址定位左侧菜单
+- 根据左侧菜单修改右上角对应的面包屑
+- 组件之间的通信
+    - 父级->子级
+    - 子级->父级
+    - 没有级联关系组件之间
+
 
 ##报错
 ```

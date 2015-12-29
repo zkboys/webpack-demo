@@ -4,12 +4,42 @@ import {Icon, Badge, Tooltip} from 'antd';
 import FAIcon from '../faicon/FAIcon';
 import avatar from './86.jpg';
 const Header = React.createClass({
+    getInitialState() {
+        var logoMaxWidth = 240
+            , logoMinWidth = 60
+            , logoMax = "后台管理系统"
+            , logoMin = "后台"
+            ;
+
+        var logoWidth = logoMaxWidth
+            , logoMax = logoMax;
+        return {
+            logoMaxWidth: logoMaxWidth,
+            logoMiniWidth: logoMinWidth,
+            logoWidth: logoWidth,
+            logoMax: logoMax,
+            logoMin: logoMin,
+            logo: logoMax
+        };
+    },
+    handelClick(){
+        var logoWidth = this.state.logoMaxWidth;
+        var logo = this.state.logoMax;
+        if (this.state.logoWidth == this.state.logoMaxWidth) {
+            logoWidth = this.state.logoMiniWidth;
+            logo = this.state.logoMin;
+        }
+        this.setState({
+            logoWidth: logoWidth,
+            logo: logo
+        });
+    },
     render() {
         return (
             <header className="admin-header">
-                <div className="admin-logo"><a href="/">后台管理台框架</a></div>
+                <div className="admin-logo" style={{width:this.state.logoWidth}}><a href="/">{this.state.logo}</a></div>
                 <Tooltip placement="right" title="切换菜单状态">
-                    <a className="admin-sidebar-toggle"><FAIcon type="fa-bars"/></a>
+                    <a className="admin-sidebar-toggle" onClick={this.handelClick}><FAIcon type="fa-bars"/></a>
                 </Tooltip>
                 <ul className="admin-header-menu">
                     <li className="admin-header-menu-item">

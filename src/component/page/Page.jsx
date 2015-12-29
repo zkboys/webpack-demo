@@ -1,4 +1,4 @@
-import './style.css';
+import './style.less';
 import React from 'react';
 
 const Page = React.createClass({

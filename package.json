@@ -3,12 +3,10 @@
   "version": "1.0.0",
   "description": "webpack demo build width webpack and ant.design",
   "main": "index.js",
-  "dependencies": {
-    "react": "^0.14.3",
-    "antd": "^0.10.4",
-    "react-dom": "^0.14.3"
-  },
   "devDependencies": {
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "antd": "^0.11.1",
     "argv": "0.0.2",
     "autoprefixer-loader": "~3.1.0",
     "babel-cli": "~6.3.17",
@@ -44,8 +42,8 @@
     "webpack": "~1.12.2"
   },
   "scripts": {
-    "open-browser": "xdg-open http://localhost:8088/webpack-dev-server/index.html",
-    "start": " npm run open-browser && webpack-dev-server --port 8088 --progress --profile --colors --cfg.clean=false",
+    "open-browser": "xdg-open http://localhost:8086/webpack-dev-server/index.html",
+    "start": " npm run open-browser && webpack-dev-server --port 8086 --progress --profile --colors --cfg.clean=false",
     "build-dev": "webpack -d -p --profile --progress --colors --display-modules --cfg.runmod=development",
     "build-test": "webpack -d -p --cfg.runmod=test",
     "build-pro": "webpack -d -p --cfg.runmod=production"
