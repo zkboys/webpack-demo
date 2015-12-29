@@ -7,16 +7,25 @@ const routes = {
     path: '/',
     component: App,
     indexRoute: {component: Dashboard},
-    childRoutes: MenusAndRouts.routs
+    childRoutes: MenusAndRouts.routs.map(function (route) {
+        route.onEnter = function (nextState, replaceState) {
+            console.log(nextState);
+            console.log(replaceState);
+        }
+        route.onLeave = function () {
+            console.log('onLeave');
+        }
+        return route;
+    })
 };
 /*其他路由在下面加入*/
 /*
 
-routes.childRoutes.push(
-    {path: 'about', component: About},
-    {path: 'inbox', component: Inbox}
-);
-*/
+ routes.childRoutes.push(
+ {path: 'about', component: About},
+ {path: 'inbox', component: Inbox}
+ );
+ */
 
 
 export default React.createClass({

@@ -18,6 +18,11 @@ npm run start
 ```
 npm run build-dev  //build-test  build-pro
 ```
+##需要学习的内容
+- React基础语法
+- React Router插件
+- React Flux应用架构
+
 ##待解决问题
 - 执行构建有些慢
 - 根据地址定位左侧菜单
@@ -26,7 +31,6 @@ npm run build-dev  //build-test  build-pro
     - 父级->子级
     - 子级->父级
     - 没有级联关系组件之间
-
 
 ##报错
 ```

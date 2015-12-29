@@ -10,13 +10,10 @@ const Header = React.createClass({
             , logoMax = "后台管理系统"
             , logoMin = "后台"
             ;
-
-        var logoWidth = logoMaxWidth
-            , logoMax = logoMax;
         return {
             logoMaxWidth: logoMaxWidth,
             logoMiniWidth: logoMinWidth,
-            logoWidth: logoWidth,
+            logoWidth: logoMaxWidth,
             logoMax: logoMax,
             logoMin: logoMin,
             logo: logoMax

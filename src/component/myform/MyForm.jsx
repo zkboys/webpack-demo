@@ -1,6 +1,7 @@
 import React from 'react';
 import Page from '../page/Page';
 import {Form, Input, Select, Checkbox, Radio, Breadcrumb} from 'antd';
+import {Link} from 'react-router'
 const FormItem = Form.Item;
 const Option = Select.Option;
 const RadioGroup = Radio.Group;
@@ -12,12 +13,12 @@ const MyForm = React.createClass({
         return (
             <Page>
                 <div className="admin-page-header">
-                    <h1 className="admin-page-header-title">MyFrom</h1>
+                    <h1 className="admin-page-header-title">我的表单</h1>
                     <Breadcrumb>
-                        <Breadcrumb.Item>首页</Breadcrumb.Item>
-                        <Breadcrumb.Item href="">应用中心</Breadcrumb.Item>
-                        <Breadcrumb.Item href="">应用列表</Breadcrumb.Item>
-                        <Breadcrumb.Item>某应用</Breadcrumb.Item>
+                        <Breadcrumb.Item><Link to="dashboard">首页</Link></Breadcrumb.Item>
+                        <Breadcrumb.Item>导航一</Breadcrumb.Item>
+                        <Breadcrumb.Item>三级导航</Breadcrumb.Item>
+                        <Breadcrumb.Item>我的表单</Breadcrumb.Item>
                     </Breadcrumb>
                 </div>
                 <div className="admin-page-content">
