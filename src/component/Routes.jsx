@@ -12,38 +12,33 @@ var oriMenus = MenusAndRouts.getRouts().oriMenus;
  * 可以用来处理左侧菜单状态 怎么作?
  * */
 browserHistory.listen(function (data) {
-    var pathname = data.pathname;
-    var menu;
     for (var i = 0; i < oriMenus.length; i++) {
-        if ('/' + oriMenus[i].path == pathname) {
-            menu = oriMenus[i];
-            break;
-        }
-    }
-    var paths = [];
-    var current = null;
-    if (menu) {
-        current = menu.key;
-        while (true) {
-            var isFind = false;
-            for (var i = 0; i < oriMenus.length; i++) {
-                if (oriMenus[i].key == menu.parentKey) {
-                    paths.push(oriMenus[i].key);
-                    menu = oriMenus[i];
-                    isFind = true;
+        if ('/' + oriMenus[i].path == data.pathname) {
+            var menu = oriMenus[i];
+            var paths = [];
+            var current = menu.key;
+            while (true) {
+                var isFind = false;
+                for (var i = 0; i < oriMenus.length; i++) {
+                    if (oriMenus[i].key == menu.parentKey) {
+                        paths.push(oriMenus[i].key);
+                        menu = oriMenus[i];
+                        isFind = true;
+                        break;
+                    }
+                }
+                if (!isFind) {
                     break;
                 }
             }
-            if (!isFind) {
-                break;
+            if (_sidebar) {
+                _sidebar.setState({
+                    current: current,
+                    openKeys: paths
+                });
             }
+            break;// if find de menu break the loop
         }
-    }
-    if (_sidebar) {
-        _sidebar.setState({
-            current: current,
-            openKeys: paths
-        });
     }
 });
 const routes = {
