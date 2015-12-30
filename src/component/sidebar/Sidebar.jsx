@@ -12,7 +12,7 @@ const Sidebar = React.createClass({
         };
     },
     handleClick(e) {
-        console.log('click ', e);
+        console.log('click menu', e);
         this.setState({
             current: e.key,
             openKeys: e.keyPath.slice(1) // 点击是会关闭其他菜单,如果不需要改变其他菜单状态,注释掉这里即可.

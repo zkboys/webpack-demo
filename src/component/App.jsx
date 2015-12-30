@@ -6,7 +6,7 @@ import Dashboard from './dashboard/Dashboard';
 const App = React.createClass({
     getInitialState(){
         return {
-            collapse: localStorage.getItem('sidebar-collapse')=='false'
+            collapse: localStorage.getItem('sidebar-collapse')=='false',
         }
     },
     handelClick(){

@@ -8,7 +8,7 @@ import MyForm from '../component/myform/MyForm'
 import Dashboard from '../component/dashboard/Dashboard'
 import MyTime from '../component/mytime/MyTime'
 const openAll = false;
-var oriMenus = [
+var oriMenus = [//左侧菜单与路由公用的数据
     {key: '1', text: '主面板', icon: 'fa-tachometer', open: true},
     {key: '11', parentKey: '1', text: '首页', icon: 'fa-arrow-right', current: true, path: 'dashboard', component: Dashboard},
     {key: '12', parentKey: '1', text: '三级导航', icon: 'fa-th-list'},
@@ -91,7 +91,7 @@ function convert(rows,collapse) {
                     subMenus.push(
                         <Menu.Item key={child.key}>
                             <FAIcon type={child.icon}/>
-                            <Link to={child.path}>{child.text}</Link>
+                            <Link to={child.path} activeClassName="active">{child.text}</Link>
                         </Menu.Item>
                     );
                 } else {// 含有子菜单
@@ -112,16 +112,17 @@ function convert(rows,collapse) {
 
     }
     return {
-        routs: nodes,
+        routs: nodes,//具有层级关系的路由
         menus: menus,
         oriMenus: oriMenus,
         openKeys: openKeys,
         current: current
     };
-
 }// end or  convert(rows)
+var collapseData = convert(oriMenus,true);
+var noCollapseData = convert(oriMenus,false);
 function getMenus(collapse){
-    var data = convert(oriMenus,collapse);
+    var data = collapse?collapseData:noCollapseData;
     return {
         routs: data.routs,
         menus: data.menus,
@@ -131,10 +132,7 @@ function getMenus(collapse){
     }
 }
 function getRouts(){
-    var data = convert(oriMenus);
-    return {
-        routs: data.routs,
-    }
+    return noCollapseData.routs;
 }
 export default {
     getMenus:getMenus,
