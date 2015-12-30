@@ -9,19 +9,19 @@ import Dashboard from '../component/dashboard/Dashboard'
 import MyTime from '../component/mytime/MyTime'
 const openAll = false;
 var oriMenus = [
-    {key: '1', text: '导航一', icon: 'fa-th-list', open: true},
+    {key: '1', text: '主面板', icon: 'fa-tachometer', open: true},
     {key: '11', parentKey: '1', text: '首页', icon: 'fa-arrow-right', current: true, path: 'dashboard', component: Dashboard},
     {key: '12', parentKey: '1', text: '三级导航', icon: 'fa-th-list'},
     {key: '121', parentKey: '12', text: '我的表单', icon: 'fa-arrow-right', path: 'myForm', component: MyForm},
     {key: '122', parentKey: '12', text: '我的时间', icon: 'fa-arrow-right', path: 'myTime', component: MyTime},
 
-    {key: '2', text: '导航二', icon: 'fa-th-list'},
-    {key: '21', parentKey: '2', text: '首页', icon: 'fa-arrow-right', path: 'dashboard', component: Dashboard},
-    {key: '22', parentKey: '2', text: '三级导航', icon: 'fa-th-list'},
+    {key: '2', text: '商务查询', icon: 'fa-binoculars'},
+    {key: '21', parentKey: '2', text: '首页222', icon: 'fa-arrow-right', path: 'dashboard', component: Dashboard},
+    {key: '22', parentKey: '2', text: '三级导航222', icon: 'fa-th-list'},
     {key: '221', parentKey: '22', text: '我的表单', icon: 'fa-arrow-right', path: 'myForm', component: MyForm},
     {key: '222', parentKey: '22', text: '我的时间', icon: 'fa-arrow-right', path: 'myTime', component: MyTime},
 
-    {key: '3', text: '导航三', icon: 'fa-th-list'},
+    {key: '3', text: '用户列表', icon: 'fa-th-list'},
     {key: '31', parentKey: '3', text: '首页', icon: 'fa-arrow-right', path: 'dashboard', component: Dashboard},
     {key: '32', parentKey: '3', text: '我的表单', icon: 'fa-arrow-right', path: 'myForm', component: MyForm},
     {key: '33', parentKey: '3', text: '我的时间', icon: 'fa-arrow-right', path: 'myTime', component: MyTime},
@@ -38,7 +38,7 @@ var oriMenus = [
  *根据sildebarMenus构造routes。
  *rows:菜单数据。
  */
-function convert(rows) {
+function convert(rows,collapse) {
     function exists(rows, parentKey) {
         for (var i = 0; i < rows.length; i++) {
             if (rows[i].key == parentKey) return true;
@@ -69,7 +69,7 @@ function convert(rows) {
         if (!exists(rows, row.parentKey)) {
             nodes.push(row);
             menus.push(
-                <SubMenu key={row.key} title={<span><FAIcon type={row.icon} />{row.text}</span>}>
+                <SubMenu key={row.key} title={<span><FAIcon type={row.icon} />{collapse?'':row.text}</span>}>
                     {row.subMenus}
                 </SubMenu>
             )
@@ -120,5 +120,23 @@ function convert(rows) {
     };
 
 }// end or  convert(rows)
-
-export default convert(oriMenus);
+function getMenus(collapse){
+    var data = convert(oriMenus,collapse);
+    return {
+        routs: data.routs,
+        menus: data.menus,
+        oriMenus: data.oriMenus,
+        openKeys: data.openKeys,
+        current: data.current
+    }
+}
+function getRouts(){
+    var data = convert(oriMenus);
+    return {
+        routs: data.routs,
+    }
+}
+export default {
+    getMenus:getMenus,
+    getRouts:getRouts
+};

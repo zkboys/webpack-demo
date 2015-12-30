@@ -3,40 +3,18 @@ import React from 'react';
 import {Icon, Badge, Tooltip} from 'antd';
 import FAIcon from '../faicon/FAIcon';
 import avatar from './86.jpg';
+var logoMaxWidth = 240
+    , logoMinWidth = 60
+    , logoMax = "后台管理系统"
+    , logoMin = "后台"
+    ;
 const Header = React.createClass({
-    getInitialState() {
-        var logoMaxWidth = 240
-            , logoMinWidth = 60
-            , logoMax = "后台管理系统"
-            , logoMin = "后台"
-            ;
-        return {
-            logoMaxWidth: logoMaxWidth,
-            logoMiniWidth: logoMinWidth,
-            logoWidth: logoMaxWidth,
-            logoMax: logoMax,
-            logoMin: logoMin,
-            logo: logoMax
-        };
-    },
-    handelClick(){
-        var logoWidth = this.state.logoMaxWidth;
-        var logo = this.state.logoMax;
-        if (this.state.logoWidth == this.state.logoMaxWidth) {
-            logoWidth = this.state.logoMiniWidth;
-            logo = this.state.logoMin;
-        }
-        this.setState({
-            logoWidth: logoWidth,
-            logo: logo
-        });
-    },
     render() {
         return (
             <header className="admin-header">
-                <div className="admin-logo" style={{width:this.state.logoWidth}}><a href="/">{this.state.logo}</a></div>
+                <div className="admin-logo" style={{width:this.props.collapse?logoMinWidth:logoMaxWidth}}><a href="/">{this.props.collapse?logoMin:logoMax}</a></div>
                 <Tooltip placement="right" title="切换菜单状态">
-                    <a className="admin-sidebar-toggle" onClick={this.handelClick}><FAIcon type="fa-bars"/></a>
+                    <a className="admin-sidebar-toggle" onClick={this.props.handelClick}><FAIcon type="fa-bars"/></a>
                 </Tooltip>
                 <ul className="admin-header-menu">
                     <li className="admin-header-menu-item">

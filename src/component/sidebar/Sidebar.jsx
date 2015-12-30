@@ -3,12 +3,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Menu} from 'antd';
 import MenusAndRouts from '../sildebarMenus'
-
 const Sidebar = React.createClass({
     getInitialState() {
+        var menus = MenusAndRouts.getMenus(this.props.collapse);
         return {
-            current: MenusAndRouts.current,
-            openKeys: MenusAndRouts.openKeys
+            current: menus.current,
+            openKeys: menus.openKeys
         };
     },
     handleClick(e) {
@@ -19,21 +19,23 @@ const Sidebar = React.createClass({
         });
     },
     onToggle(info){
+        if(this.props.collapse) return;//折叠状态时,不改变打开菜单状态,否则切回展开状态,无法恢复打开状态.
         this.setState({
             openKeys: info.openKeys
         });
     },
     render() {
         return (
-            <div className="admin-sidebar">
-                <Menu onClick={this.handleClick}
+            <div className="admin-sidebar" style={{width:this.props.collapse?60:240,overflow:this.props.collapse?'visible':'auto'}}>
+                <Menu
                       openKeys={this.state.openKeys}
+                      selectedKeys={[this.state.current]}
+                      onClick={this.handleClick}
                       onOpen={this.onToggle}
                       onClose={this.onToggle}
-                      selectedKeys={[this.state.current]}
                       style={{marginLeft:-8}}
-                      mode="inline">
-                    {MenusAndRouts.menus}
+                      mode={this.props.collapse?'vertical':'inline'}>
+                    {MenusAndRouts.getMenus(this.props.collapse).menus}
                 </Menu>
             </div>
         );

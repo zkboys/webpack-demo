@@ -1,13 +1,12 @@
 .admin-sidebar {
     position: fixed;
-    z-index: 90;
+    z-index: 100;
     top: 50px;
     bottom: 0;
     left: 0;
     width: 240px;
     background-color: #222d32;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: auto;
     box-sizing: border-box;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
@@ -65,6 +64,15 @@
     display: inline-block;
     color: #b8c7ce;
     width: 100%;
+}
+/*
+修复菜单展开/折叠状态切换bug
+*/
+.ant-menu-vertical{
+    display: block!important;
+}
+.admin-sidebar .ant-menu-vertical.ant-menu-hidden{
+    display: none!important;
 }
 
 

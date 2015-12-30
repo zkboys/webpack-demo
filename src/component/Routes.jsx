@@ -7,7 +7,7 @@ const routes = {
     path: '/',
     component: App,
     indexRoute: {component: Dashboard},
-    childRoutes: MenusAndRouts.routs.map(function (route) {
+    childRoutes: MenusAndRouts.getRouts().routs.map(function (route) {
         route.onEnter = function (nextState, replaceState) {
             console.log(nextState);
             console.log(replaceState);

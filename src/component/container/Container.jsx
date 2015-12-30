@@ -4,7 +4,7 @@ import React from 'react';
 const Container = React.createClass({
     render() {
         return (
-            <div className="admin-container">{this.props.children}</div>
+            <div className="admin-container" style={{left:this.props.collapse?60:240}}>{this.props.children}</div>
         );
     }
 });
