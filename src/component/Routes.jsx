@@ -41,7 +41,8 @@ const routes = {
 export default React.createClass({
     render() {
         return (
-            <Router routes={routes} history={browserHistory}/>
+            //<Router routes={routes} history={browserHistory}/>
+            <Router routes={routes}/>
         );
     }
 });
