@@ -9,28 +9,22 @@ import Dashboard from '../component/dashboard/Dashboard'
 import MyTime from '../component/mytime/MyTime'
 const openAll = false;
 var oriMenus = [//左侧菜单与路由公用的数据
-    {key: '1', text: '主面板', icon: 'fa-tachometer', open: true},
-    {key: '11', parentKey: '1', text: '首页', icon: 'fa-arrow-right', current: true, path: 'dashboard', component: Dashboard},
+    {key: '1', text: '主面板', icon: 'fa-tachometer'/*, open: true*/},
+    {key: '11', parentKey: '1', text: '首页', icon: 'fa-arrow-right',/* current: true,*/ path: 'dashboard1', component: Dashboard},
     {key: '12', parentKey: '1', text: '三级导航', icon: 'fa-th-list'},
-    {key: '121', parentKey: '12', text: '我的表单', icon: 'fa-arrow-right', path: 'myForm', component: MyForm},
-    {key: '122', parentKey: '12', text: '我的时间', icon: 'fa-arrow-right', path: 'myTime', component: MyTime},
+    {key: '121', parentKey: '12', text: '我的表单', icon: 'fa-arrow-right', path: 'myForm1', component: MyForm},
+    {key: '122', parentKey: '12', text: '我的时间', icon: 'fa-arrow-right', path: 'myTime1', component: MyTime},
 
     {key: '2', text: '商务查询', icon: 'fa-binoculars'},
-    {key: '21', parentKey: '2', text: '首页222', icon: 'fa-arrow-right', path: 'dashboard', component: Dashboard},
+    {key: '21', parentKey: '2', text: '首页222', icon: 'fa-arrow-right', path: 'dashboard2', component: Dashboard},
     {key: '22', parentKey: '2', text: '三级导航222', icon: 'fa-th-list'},
-    {key: '221', parentKey: '22', text: '我的表单', icon: 'fa-arrow-right', path: 'myForm', component: MyForm},
-    {key: '222', parentKey: '22', text: '我的时间', icon: 'fa-arrow-right', path: 'myTime', component: MyTime},
+    {key: '221', parentKey: '22', text: '我的表单', icon: 'fa-arrow-right', path: 'myForm2', component: MyForm},
+    {key: '222', parentKey: '22', text: '我的时间', icon: 'fa-arrow-right', path: 'myTime2', component: MyTime},
 
     {key: '3', text: '用户列表', icon: 'fa-th-list'},
-    {key: '31', parentKey: '3', text: '首页', icon: 'fa-arrow-right', path: 'dashboard', component: Dashboard},
-    {key: '32', parentKey: '3', text: '我的表单', icon: 'fa-arrow-right', path: 'myForm', component: MyForm},
-    {key: '33', parentKey: '3', text: '我的时间', icon: 'fa-arrow-right', path: 'myTime', component: MyTime},
-    {key: '34', parentKey: '3', text: '首页', icon: 'fa-arrow-right', path: 'dashboard', component: Dashboard},
-    {key: '35', parentKey: '3', text: '我的表单', icon: 'fa-arrow-right', path: 'myForm', component: MyForm},
-    {key: '36', parentKey: '3', text: '我的时间', icon: 'fa-arrow-right', path: 'myTime', component: MyTime},
-    {key: '37', parentKey: '3', text: '首页', icon: 'fa-arrow-right', path: 'dashboard', component: Dashboard},
-    {key: '38', parentKey: '3', text: '我的表单', icon: 'fa-arrow-right', path: 'myForm', component: MyForm},
-    {key: '39', parentKey: '3', text: '我的时间', icon: 'fa-arrow-right', path: 'myTime', component: MyTime},
+    {key: '31', parentKey: '3', text: '首页', icon: 'fa-arrow-right', path: 'dashboard3', component: Dashboard},
+    {key: '32', parentKey: '3', text: '我的表单', icon: 'fa-arrow-right', path: 'myForm3', component: MyForm},
+    {key: '33', parentKey: '3', text: '我的时间', icon: 'fa-arrow-right', path: 'myTime3', component: MyTime}
 
 ];
 
@@ -38,7 +32,7 @@ var oriMenus = [//左侧菜单与路由公用的数据
  *根据sildebarMenus构造routes。
  *rows:菜单数据。
  */
-function convert(rows,collapse) {
+function convert(rows, collapse) {
     function exists(rows, parentKey) {
         for (var i = 0; i < rows.length; i++) {
             if (rows[i].key == parentKey) return true;
@@ -119,10 +113,10 @@ function convert(rows,collapse) {
         current: current
     };
 }// end or  convert(rows)
-var collapseData = convert(oriMenus,true);
-var noCollapseData = convert(oriMenus,false);
-function getMenus(collapse){
-    var data = collapse?collapseData:noCollapseData;
+var collapseData = convert(oriMenus, true);
+var noCollapseData = convert(oriMenus, false);
+function getMenus(collapse) {
+    var data = collapse ? collapseData : noCollapseData;
     return {
         routs: data.routs,
         menus: data.menus,
@@ -131,10 +125,13 @@ function getMenus(collapse){
         current: data.current
     }
 }
-function getRouts(){
-    return noCollapseData.routs;
+function getRouts() {
+    return {
+        routs: noCollapseData.routs,
+        oriMenus: oriMenus
+    };
 }
 export default {
-    getMenus:getMenus,
-    getRouts:getRouts
+    getMenus: getMenus,
+    getRouts: getRouts
 };

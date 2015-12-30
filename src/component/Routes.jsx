@@ -2,31 +2,55 @@ import React from 'react';
 import { Router} from 'react-router'
 import MenusAndRouts from './sildebarMenus'
 import App from '../component/App'
-import Dashboard from '../component/dashboard/Dashboard'
+import Home from '../component/home/Home'
 import createBrowserHistory from 'history/lib/createBrowserHistory'
 const browserHistory = createBrowserHistory();
+var menuRouts = MenusAndRouts.getRouts().routs;
+var oriMenus = MenusAndRouts.getRouts().oriMenus;
 /*
  * 监听地址栏改变
  * 可以用来处理左侧菜单状态 怎么作?
  * */
 browserHistory.listen(function (data) {
     var pathname = data.pathname;
-    console.log('history listen', data);
+    var menu;
+    for (var i = 0; i < oriMenus.length; i++) {
+        if ('/' + oriMenus[i].path == pathname) {
+            menu = oriMenus[i];
+            break;
+        }
+    }
+    var paths = [];
+    var current = null;
+    if (menu) {
+        current = menu.key;
+        while (true) {
+            var isFind = false;
+            for (var i = 0; i < oriMenus.length; i++) {
+                if (oriMenus[i].key == menu.parentKey) {
+                    paths.push(oriMenus[i].key);
+                    menu = oriMenus[i];
+                    isFind = true;
+                    break;
+                }
+            }
+            if (!isFind) {
+                break;
+            }
+        }
+    }
+    if (_sidebar) {
+        _sidebar.setState({
+            current: current,
+            openKeys: paths
+        });
+    }
 });
 const routes = {
     path: '/',
     component: App,
-    indexRoute: {component: Dashboard},
-    childRoutes: MenusAndRouts.getRouts().map(function (route) {
-        route.onEnter = function (nextState, replaceState) {
-            console.log('route.onEnter', nextState);
-            console.log('route.onEnter', replaceState);
-        };
-        route.onLeave = function () {
-            console.log('route.onLeave');
-        };
-        return route;
-    })
+    indexRoute: {component: Home},
+    childRoutes: menuRouts
 };
 /*其他路由在下面加入*/
 /*
@@ -41,8 +65,8 @@ const routes = {
 export default React.createClass({
     render() {
         return (
-            //<Router routes={routes} history={browserHistory}/>
-            <Router routes={routes}/>
+            <Router routes={routes} history={browserHistory}/>
+            //<Router routes={routes}/>
         );
     }
 });

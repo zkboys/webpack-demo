@@ -5,6 +5,7 @@ import { Menu} from 'antd';
 import MenusAndRouts from '../sildebarMenus'
 const Sidebar = React.createClass({
     getInitialState() {
+        _sidebar = this;
         var menus = MenusAndRouts.getMenus(this.props.collapse);
         return {
             current: menus.current,
