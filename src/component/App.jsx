@@ -2,7 +2,6 @@ import React from 'react';
 import HeaderBar from './header/Header';
 import Sidebar from './sidebar/Sidebar';
 import Container from './container/Container';
-import Dashboard from './dashboard/Dashboard';
 const App = React.createClass({
     getInitialState(){
         return {
